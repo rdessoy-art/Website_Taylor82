@@ -341,6 +341,40 @@ h3 {
   background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(57,255,20,0.05));
 }
 
+.sponsor-tile {
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(57,255,20,0.05));
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.sponsor-tile:hover {
+  border-color: rgba(57,255,20,0.45);
+  background: linear-gradient(135deg, rgba(57,255,20,0.1), rgba(255,255,255,0.04));
+}
+
+.sponsor-logo {
+  max-height: 64px;
+  width: auto;
+  filter: invert(1);
+}
+
+.sponsor-name {
+  color: var(--silver);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 .contact-card {
   text-align: center;
   padding: clamp(32px, 5vw, 58px);
@@ -361,6 +395,22 @@ h3 {
   color: var(--muted);
   padding: 30px 16px;
   border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-credit {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.footer-credit a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 860px) {
