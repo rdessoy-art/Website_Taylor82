@@ -52,6 +52,7 @@ img {
 }
 
 .brand-text {
+  color: var(--green);
   font-size: 1.7rem;
   font-weight: 900;
   letter-spacing: 0.04em;
