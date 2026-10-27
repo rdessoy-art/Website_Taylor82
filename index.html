@@ -180,15 +180,15 @@
           <tbody>
             <tr><td>Official Test</td><td>3–4 April 2027</td><td>Donington Park GP</td></tr>
             <tr><td>Official Test</td><td>21–22 April 2027</td><td>Oulton Park International</td></tr>
-            <tr><td>Round 1</td><td>1–3 May 2027</td><td>Oulton Park</td></tr>
-            <tr><td>Round 2</td><td>21–23 May 2027</td><td>Donington Park GP</td></tr>
-            <tr><td>Round 3</td><td>18–20 June 2027</td><td>Knockhill</td></tr>
-            <tr><td>Round 4</td><td>2–4 July 2027</td><td>Snetterton</td></tr>
-            <tr><td>Round 5</td><td>16–18 July 2027</td><td>Brands Hatch GP</td></tr>
-            <tr><td>Round 6</td><td>30 July–1 August 2027</td><td>Oulton Park</td></tr>
-            <tr><td>Round 7</td><td>6–8 August 2027</td><td>Thruxton</td></tr>
-            <tr><td>Round 8</td><td>28–30 August 2027</td><td>Cadwell Park</td></tr>
-            <tr><td>Round 9</td><td>17–19 September 2027</td><td>TBC / Final Rounds TBA</td></tr>
+            <tr><td>1</td><td>1–3 May 2027</td><td>Oulton Park</td></tr>
+            <tr><td>2</td><td>21–23 May 2027</td><td>Donington Park GP</td></tr>
+            <tr><td>3</td><td>18–20 June 2027</td><td>Knockhill</td></tr>
+            <tr><td>4</td><td>2–4 July 2027</td><td>Snetterton</td></tr>
+            <tr><td>5</td><td>16–18 July 2027</td><td>Brands Hatch GP</td></tr>
+            <tr><td>6</td><td>30 July–1 August 2027</td><td>Oulton Park</td></tr>
+            <tr><td>7</td><td>6–8 August 2027</td><td>Thruxton</td></tr>
+            <tr><td>8</td><td>28–30 August 2027</td><td>Cadwell Park</td></tr>
+            <tr><td>9</td><td>17–19 September 2027</td><td>TBC / Final Rounds TBA</td></tr>
           </tbody>
         </table>
       </div>
@@ -271,9 +271,20 @@
     const toggle = document.querySelector('.menu-toggle');
     const links = document.querySelector('.nav-links');
 
-    toggle.addEventListener('click', () => {
-      const isOpen = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
+    function setMenu(open) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.textContent = open ? '✕' : '☰';
+    }
+
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+
+    // Close the menu after a link is chosen, on Escape, or when tapping outside it
+    links.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-bar')) setMenu(false);
     });
   </script>
 </body>

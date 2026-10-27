@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
 }
 
 body {
@@ -84,10 +85,23 @@ img {
   font-weight: 700;
 }
 
-.nav-links a:hover,
 .nav-links .nav-cta {
   color: var(--black);
   background: var(--green);
+}
+
+/* Hover only on devices that really hover, so touch screens don't keep links highlighted */
+@media (hover: hover) {
+  .nav-links a:hover {
+    color: var(--black);
+    background: var(--green);
+  }
+}
+
+.nav-links a:focus-visible,
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .menu-toggle {
@@ -274,6 +288,11 @@ h3 {
   padding: 16px 20px;
   text-align: left;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.calendar-table th:first-child,
+.calendar-table td:first-child {
+  text-align: center;
 }
 
 .calendar-table th {
