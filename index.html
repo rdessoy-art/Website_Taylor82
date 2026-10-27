@@ -233,7 +233,7 @@
             <img src="assets/dessoyracing-logo.png" alt="Dessoy Racing logo" class="sponsor-logo" loading="lazy" />
           </span>
           <span class="sponsor-name">Dessoy Racing</span>
-          <span class="sponsor-desc">Harrison Dessoy, a young Essex motorcycle racer competing in World Sportbike as number 55, who also builds websites.</span>
+          <span class="sponsor-desc">Harrison Dessoy competes in World Sportbike as number 55 and is a professional web designer, building modern, high-quality websites.</span>
         </a>
         <a class="sponsor-tile" href="https://www.easterngarageessex.co.uk?utm_source=mark-taylor-racing&amp;utm_medium=sponsor-link&amp;utm_campaign=mt82-sponsorship&amp;utm_content=eastern-garage-racing" target="_blank" rel="noopener" aria-label="Visit Eastern Garage Racing website">
           <span class="sponsor-logo-box">
@@ -251,17 +251,16 @@
         <h2>Contact Mark Taylor #82</h2>
         <p>For sponsorship, racing enquiries, media, or event opportunities, use the contact links below.</p>
         <div class="contact-links">
-          <a class="button primary" href="mailto:Taylorandsons@outlook.com?subject=www.MarkTaylor82.com%20Website%20Enquiry">Email Mark</a>
+          <a class="button primary" id="email-link" href="#contact">Email Mark</a>
           <a class="button secondary" href="https://www.instagram.com/mark_taylor82/" target="_blank" rel="noopener">Instagram</a>
         </div>
-        <p class="small-note">Email: <strong>Taylorandsons@outlook.com</strong></p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>© <span id="year"></span> Mark Taylor Racing #82. All rights reserved.</p>
-    <p class="footer-credit">Website designed &amp; built by <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener">RDessoyArt</a> — for website enquiries or changes, <a href="mailto:robert@dessoyracing.com?subject=Website%20Enquiry%20from%20MarkTaylor82.com%20website">get in touch</a>.</p>
+    <p class="footer-credit">Website designed &amp; built by <a href="https://www.dessoyracing.com" target="_blank" rel="noopener">www.DessoyRacing.com</a></p>
   </footer>
 
   <script>
@@ -269,6 +268,16 @@
 
     const toggle = document.querySelector('.menu-toggle');
     const links = document.querySelector('.nav-links');
+
+    // Build the mailto link in the browser so the address is not in the page source
+    const emailLink = document.getElementById('email-link');
+    function armEmail() {
+      if (emailLink.dataset.armed) return;
+      const addr = ['Taylorandsons', 'outlook.com'].join('@');
+      emailLink.href = 'mailto:' + addr + '?subject=' + encodeURIComponent('www.MarkTaylor82.com Website Enquiry');
+      emailLink.dataset.armed = '1';
+    }
+    ['mouseover', 'focus', 'touchstart', 'click'].forEach((ev) => emailLink.addEventListener(ev, armEmail));
 
     function setMenu(open) {
       links.classList.toggle('open', open);
