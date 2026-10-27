@@ -110,7 +110,8 @@ img {
 }
 
 .hero {
-  min-height: calc(100vh - 76px);
+  padding-top: 48px;
+  padding-bottom: 48px;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   align-items: center;
@@ -240,6 +241,7 @@ h3 {
 .about-copy p,
 .card p,
 .timeline p,
+.achievement-list,
 .contact-card p {
   color: var(--silver);
 }
@@ -265,23 +267,6 @@ h3 {
   padding: 32px;
 }
 
-.laurel-panel {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 18px;
-  margin-top: 26px;
-  padding: 22px;
-  border-radius: 18px;
-  background: rgba(57,255,20,0.08);
-  border: 1px solid rgba(57,255,20,0.18);
-}
-
-.laurel {
-  color: var(--green);
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .timeline {
   display: grid;
   gap: 16px;
@@ -297,21 +282,56 @@ h3 {
   border-radius: 18px;
 }
 
+.achievement-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 6px;
+}
+
+.calendar-table-wrap {
+  overflow-x: auto;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--soft-black);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  color: var(--silver);
+}
+
+.calendar-table th,
+.calendar-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.calendar-table th {
+  color: var(--green);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.calendar-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .year {
   color: var(--green);
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.cards,
-.sponsor-grid {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
 .card,
-.sponsor-placeholder,
 .contact-card {
   background: var(--soft-black);
   border: 1px solid rgba(255,255,255,0.08);
@@ -330,25 +350,13 @@ h3 {
   letter-spacing: 0.12em;
 }
 
-.sponsor-placeholder {
-  min-height: 130px;
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(57,255,20,0.05));
-}
-
 .sponsor-tile {
-  min-height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 12px;
   padding: 24px;
+  text-align: center;
   border-radius: var(--radius);
   border: 1px solid rgba(255,255,255,0.08);
   background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(57,255,20,0.05));
@@ -356,23 +364,40 @@ h3 {
   transition: border-color 0.2s, background 0.2s;
 }
 
-.sponsor-tile:hover {
+a.sponsor-tile:hover {
   border-color: rgba(57,255,20,0.45);
   background: linear-gradient(135deg, rgba(57,255,20,0.1), rgba(255,255,255,0.04));
 }
 
+.sponsor-logo-box {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--white);
+  border-radius: 14px;
+}
+
 .sponsor-logo {
-  max-height: 64px;
-  width: auto;
-  filter: invert(1);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .sponsor-name {
-  color: var(--silver);
-  font-size: 0.8rem;
-  font-weight: 700;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
+}
+
+.sponsor-desc {
+  color: var(--silver);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .contact-card {
@@ -438,14 +463,13 @@ h3 {
 
   .hero,
   .about-grid,
-  .cards,
-  .sponsor-grid {
+  .cards {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    min-height: auto;
-    padding-top: 56px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 
   .stats-strip {
@@ -455,5 +479,28 @@ h3 {
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+}
+
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.sponsor-grid > .sponsor-tile {
+  flex: 0 1 calc((100% - 36px) / 3);
+}
+
+@media (max-width: 860px) {
+  .sponsor-grid > .sponsor-tile {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 560px) {
+  .sponsor-grid > .sponsor-tile {
+    flex-basis: 100%;
   }
 }
