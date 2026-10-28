@@ -547,4 +547,9 @@ button.share-link {
   .share-instagram {
     display: inline-flex;
   }
+
+  /* The share sheet behind the Instagram icon already lists Facebook */
+  .share-facebook {
+    display: none;
+  }
 }

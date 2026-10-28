@@ -331,6 +331,7 @@
     }
     ['mouseover', 'focus', 'touchstart', 'click'].forEach((ev) => emailLink.addEventListener(ev, armEmail));
 
+    // Touch devices only see the Instagram icon (the share sheet lists Facebook too); desktop sees Facebook.
     // Instagram has no web share URL. Phones/tablets: device share sheet (lists the Instagram app).
     // Desktop: copy the link and open Instagram in a new tab to paste it.
     const shareStatuses = document.querySelectorAll('.share-status');
@@ -344,13 +345,6 @@
     async function openShareSheet() {
       try { await navigator.share({ title: 'Mark Taylor #82', url: siteUrl }); } catch (e) { /* cancelled */ }
     }
-
-    // Facebook: share sheet on phones/tablets, otherwise the normal link opens Facebook's share dialog
-    document.querySelectorAll('.share-facebook').forEach((fbLink) => fbLink.addEventListener('click', (e) => {
-      if (!canShareSheet()) return;
-      e.preventDefault();
-      openShareSheet();
-    }));
 
     document.querySelectorAll('.share-instagram').forEach((igBtn) => igBtn.addEventListener('click', async () => {
       const url = siteUrl;
