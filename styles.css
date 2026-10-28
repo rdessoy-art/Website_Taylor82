@@ -122,7 +122,7 @@ img {
   padding-top: 48px;
   padding-bottom: 48px;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 46px;
 }
@@ -197,14 +197,6 @@ h3 {
   color: var(--white);
   border-color: rgba(255,255,255,0.22);
   background: rgba(255,255,255,0.06);
-}
-
-.hero-logo-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: 0 28px 80px rgba(0,0,0,0.5);
 }
 
 .section-heading {
@@ -558,7 +550,8 @@ button.share-link {
 }
 
 .hero-share {
-  padding: 22px 0 0;
+  align-items: flex-start;
+  padding: 28px 0 0;
 }
 
 /* Instagram has no web share dialog, so only offer it where the device share sheet exists */
