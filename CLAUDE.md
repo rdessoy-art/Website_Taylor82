@@ -7,7 +7,7 @@ NOTE: every file in this repo is served publicly by GitHub Pages. Do not put ema
 ## Layout
 - `index.html` – the whole site: nav, hero, About, Achievements by year, Calendar, Sponsors, Contact, footer. Head holds SEO tags (title, description, canonical, Open Graph, JSON-LD Person).
 - `styles.css` – all styling. Mobile breakpoints at 860px and 560px.
-- `assets/` – logos and photos. `mt82-logo.png` (header), `mt82-share.png` (social sharing image), `taylor82-logo.png` (hero), sponsor logos.
+- `assets/` – logos and photos. `mt82-logo.png` (header), `mt82-share.png` (social sharing image), `taylor82-logo.png` (hero), sponsor logos, and the five About-section photos (`mark-norton-team.jpg` as a wide 3:2 tile on top, then `mark-portrait.jpg`, `mark-norton-82.jpg`, `mark-goodwood.jpg`, `mark-trophy.jpg` as a 2x2 grid of square cover-cropped tiles).
 - `favicon.ico`, `apple-touch-icon.png` – supplied by the customer (MT82, Kawasaki green). A new logo is planned; when it arrives replace the header logo, favicon, apple-touch icon and share image together.
 - `robots.txt`, `sitemap.xml`, `CNAME` (marktaylor82.com – keep it).
 
