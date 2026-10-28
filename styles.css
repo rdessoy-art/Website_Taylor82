@@ -484,3 +484,56 @@ a.sponsor-tile:hover {
     flex-basis: 100%;
   }
 }
+
+.share-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 40px;
+}
+
+.share-bar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.share-link {
+  display: inline-flex;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.share-link:hover {
+  transform: scale(1.1);
+}
+
+.share-link:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+.share-icons {
+  display: flex;
+  gap: 16px;
+}
+
+button.share-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.share-status {
+  min-height: 1.2em;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.hero-share {
+  padding: 22px 0 0;
+}

@@ -39,6 +39,17 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#FEDA75"/>
+        <stop offset="0.25" stop-color="#FA7E1E"/>
+        <stop offset="0.5" stop-color="#D62976"/>
+        <stop offset="0.75" stop-color="#962FBF"/>
+        <stop offset="1" stop-color="#4F5BD5"/>
+      </linearGradient>
+    </defs>
+  </svg>
   <header class="site-header">
     <nav class="nav-bar" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="Mark Taylor MT82 home">
@@ -67,8 +78,27 @@
           <a class="button secondary" href="https://www.instagram.com/mark_taylor82/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
-      <div class="hero-logo-card" aria-label="Taylor 82 race logo">
-        <img src="assets/taylor82-logo.png" alt="Mark Taylor #82 motorcycle racer logo in Kawasaki green" width="1100" height="366" />
+      <div class="hero-side">
+        <div class="hero-logo-card" aria-label="Taylor 82 race logo">
+          <img src="assets/taylor82-logo.png" alt="Mark Taylor #82 motorcycle racer logo in Kawasaki green" width="1100" height="366" />
+        </div>
+      <div class="share-bar hero-share">
+        <p>Share this site</p>
+        <div class="share-icons">
+        <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmarktaylor82.com%2F" target="_blank" rel="noopener" aria-label="Share this website on Facebook" title="Share on Facebook">
+          <svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true" focusable="false"><path fill="#0866FF" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+        </a>
+        <button type="button" class="share-link share-instagram" aria-label="Share this website on Instagram" title="Share on Instagram">
+          <svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true" focusable="false">
+            <rect width="24" height="24" rx="6" fill="url(#ig-grad)"/>
+            <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="3.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+            <circle cx="16.2" cy="7.8" r="1.1" fill="#fff"/>
+          </svg>
+        </button>
+        </div>
+        <p class="share-status" role="status" aria-live="polite"></p>
+      </div>
       </div>
     </section>
 
@@ -260,6 +290,24 @@
         </div>
       </div>
     </section>
+
+    <div class="share-bar">
+      <p>Share this site</p>
+      <div class="share-icons">
+      <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmarktaylor82.com%2F" target="_blank" rel="noopener" aria-label="Share this website on Facebook" title="Share on Facebook">
+        <svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true" focusable="false"><path fill="#0866FF" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+      </a>
+      <button type="button" class="share-link share-instagram" aria-label="Share this website on Instagram" title="Share on Instagram">
+        <svg viewBox="0 0 24 24" width="36" height="36" aria-hidden="true" focusable="false">
+          <rect width="24" height="24" rx="6" fill="url(#ig-grad)"/>
+          <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="3.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+          <circle cx="16.2" cy="7.8" r="1.1" fill="#fff"/>
+        </svg>
+      </button>
+      </div>
+      <p class="share-status" role="status" aria-live="polite"></p>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -282,6 +330,29 @@
       emailLink.dataset.armed = '1';
     }
     ['mouseover', 'focus', 'touchstart', 'click'].forEach((ev) => emailLink.addEventListener(ev, armEmail));
+
+    // Instagram has no web share URL. Phones/tablets: device share sheet (lists the Instagram app).
+    // Desktop: copy the link and open Instagram in a new tab to paste it.
+    const shareStatuses = document.querySelectorAll('.share-status');
+    function setShareStatus(msg) {
+      shareStatuses.forEach((el) => { el.textContent = msg; });
+      clearTimeout(setShareStatus.t);
+      setShareStatus.t = setTimeout(() => setShareStatus(''), 5000);
+    }
+    document.querySelectorAll('.share-instagram').forEach((igBtn) => igBtn.addEventListener('click', async () => {
+      const url = 'https://marktaylor82.com/';
+      if (navigator.share && window.matchMedia('(pointer: coarse)').matches) {
+        try { await navigator.share({ title: 'Mark Taylor #82', url }); } catch (e) { /* cancelled */ }
+        return;
+      }
+      window.open('https://www.instagram.com/', '_blank', 'noopener');
+      try {
+        await navigator.clipboard.writeText(url);
+        setShareStatus('Link copied – paste it into your Instagram post or message');
+      } catch (e) {
+        setShareStatus('Copy this link to share: ' + url);
+      }
+    }));
 
     function setMenu(open) {
       links.classList.toggle('open', open);
