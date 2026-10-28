@@ -549,11 +549,6 @@ button.share-link {
   letter-spacing: 0 !important;
 }
 
-.hero-share {
-  align-items: flex-start;
-  padding: 28px 0 0;
-}
-
 /* Instagram has no web share dialog, so only offer it where the device share sheet exists */
 .share-instagram {
   display: none;
@@ -567,5 +562,30 @@ button.share-link {
   /* The share sheet behind the Instagram icon already lists Facebook */
   .share-facebook {
     display: none;
+  }
+}
+
+/* Share icons in the nav bar */
+.nav-share {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 10px;
+}
+
+.nav-links a.share-link {
+  padding: 0;
+  background: none;
+}
+
+.nav-share svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 860px) {
+  .nav-share {
+    justify-content: center;
+    margin: 6px 0 0;
   }
 }
