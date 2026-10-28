@@ -537,3 +537,14 @@ button.share-link {
 .hero-share {
   padding: 22px 0 0;
 }
+
+/* Instagram has no web share dialog, so only offer it where the device share sheet exists */
+.share-instagram {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .share-instagram {
+    display: inline-flex;
+  }
+}
