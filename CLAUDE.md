@@ -23,7 +23,7 @@ NOTE: every file in this repo is served publicly by GitHub Pages. Do not put ema
 - Sponsor links carry UTM tags: `utm_source=mark-taylor-racing&utm_medium=sponsor-link&utm_campaign=mt82-sponsorship&utm_content=<sponsor-slug>`.
 - Sponsors, in order: All Clear Services Ltd, Oakdene Classic Racing, Melbray London, Mark Walker Coaching, Dessoy Racing, Eastern Garage Racing. Logos all sit in a uniform white panel, so supply or convert logos dark-on-white. Oakdene has no link yet; its and Melbray's descriptions are placeholders until the customer supplies text.
 - Calendar rows show the round number only (header says "Round"); the "Official Test" rows keep their label. The 2027 dates come from the customer's screenshot of the official BSB/BMW F900 R Cup calendar and differ from an earlier document, so confirm if in doubt.
-- Footer credit reads "Website designed & built by www.DessoyRacing.com".
+- Footer credit reads "Website designed & built by websites.dessoy.co.uk" (links to https://websites.dessoy.co.uk).
 - News section and the stats strip (race number / championships / ambition) were deliberately removed.
 
 ## Gotchas
