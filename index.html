@@ -36,6 +36,32 @@
     "sameAs": ["https://www.instagram.com/mark_taylor82/"]
   }
   </script>
+  <script>
+    // Google Analytics 4. Loads only after the visitor accepts the cookie banner (choice kept for 12 months).
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    const GA_ID = 'G-LNJE8TDHPR';
+    const CONSENT_KEY = 'mt82-consent';
+    function loadAnalytics() {
+      window['ga-disable-' + GA_ID] = false;
+      if (loadAnalytics.done) return;
+      loadAnalytics.done = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+    function readConsent() {
+      try {
+        const c = JSON.parse(localStorage.getItem(CONSENT_KEY));
+        if (c && Date.now() - c.t < 365 * 864e5) return c.v;
+      } catch (e) { /* storage blocked */ }
+      return null;
+    }
+    if (readConsent() === 'granted') loadAnalytics();
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -320,7 +346,16 @@
   <footer class="site-footer">
     <p>© <span id="year"></span> Mark Taylor Racing #82. All rights reserved.</p>
     <p class="footer-credit">Website designed &amp; built by <a href="https://websites.dessoy.co.uk" target="_blank" rel="noopener">websites.dessoy.co.uk</a></p>
+    <p class="footer-credit"><button type="button" class="cookie-settings">Cookie settings</button></p>
   </footer>
+
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie choice" hidden>
+    <p>We use analytics cookies to understand how visitors use this site.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn accept">Accept</button>
+      <button type="button" class="cookie-btn decline">No thanks</button>
+    </div>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -383,6 +418,37 @@
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.nav-bar')) setMenu(false);
     });
+
+    // Cookie banner: ask once, remember the answer for 12 months; "Cookie settings" in the footer reopens it
+    const cookieBanner = document.getElementById('cookie-banner');
+    function clearAnalyticsCookies() {
+      const domain = location.hostname.replace(/^www\./, '');
+      document.cookie.split(';').forEach((c) => {
+        const name = c.split('=')[0].trim();
+        if (name === '_ga' || name.startsWith('_ga_')) {
+          ['', '; domain=' + domain, '; domain=.' + domain].forEach((d) => {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+          });
+        }
+      });
+    }
+    function chooseConsent(value) {
+      try { localStorage.setItem(CONSENT_KEY, JSON.stringify({ v: value, t: Date.now() })); } catch (e) { /* storage blocked */ }
+      cookieBanner.hidden = true;
+      if (value === 'granted') {
+        loadAnalytics();
+      } else {
+        window['ga-disable-' + GA_ID] = true;
+        clearAnalyticsCookies();
+      }
+    }
+    cookieBanner.querySelector('.accept').addEventListener('click', () => chooseConsent('granted'));
+    cookieBanner.querySelector('.decline').addEventListener('click', () => chooseConsent('denied'));
+    document.querySelector('.cookie-settings').addEventListener('click', () => {
+      cookieBanner.hidden = false;
+      cookieBanner.querySelector('.accept').focus();
+    });
+    if (!readConsent()) cookieBanner.hidden = false;
   </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ Static site (HTML + CSS + one inline script, no build step) for motorcycle racer
 NOTE: every file in this repo is served publicly by GitHub Pages. Do not put emails, account numbers or other private details in this file or the README.
 
 ## Layout
-- `index.html` – the whole site: nav, hero, About, Achievements by year, Calendar, Sponsors, Contact, footer. Head holds SEO tags (title, description, canonical, Open Graph, JSON-LD Person).
+- `index.html` – the whole site: nav, hero, About, Achievements by year, Calendar, Sponsors, Contact, footer, cookie banner. Head holds SEO tags (title, description, canonical, Open Graph, JSON-LD Person) and the Google Analytics loader.
 - `styles.css` – all styling. Mobile breakpoints at 860px and 560px.
 - `assets/` – logos and photos. `mt82-logo.png` (header), `mt82-share.png` (social sharing image), `taylor82-logo.png` (no longer used on the page), sponsor logos, and the five About-section photos (`mark-norton-team.jpg` as a wide 3:2 tile on top, then `mark-portrait.jpg`, `mark-norton-82.jpg`, `mark-goodwood.jpg`, `mark-trophy.jpg` as a 2x2 grid of square cover-cropped tiles).
 - `favicon.ico`, `apple-touch-icon.png` – supplied by the customer (MT82, Kawasaki green). A new logo is planned; when it arrives replace the header logo, favicon, apple-touch icon and share image together.
@@ -24,17 +24,17 @@ NOTE: every file in this repo is served publicly by GitHub Pages. Do not put ema
 - Sponsors, in order: All Clear Services Ltd, Oakdene Classic Racing, Melbray London, Mark Walker Coaching, Dessoy Websites (links to websites.dessoy.co.uk; still uses the Dessoy Racing logo), Eastern Garage Racing. Logos all sit in a uniform white panel, so supply or convert logos dark-on-white. Oakdene has no link yet; its and Melbray's descriptions are placeholders until the customer supplies text.
 - Calendar rows show the round number only (header says "Round"); the "Official Test" rows keep their label. The 2027 dates come from the customer's screenshot of the official BSB/BMW F900 R Cup calendar and differ from an earlier document, so confirm if in doubt.
 - Footer credit reads "Website designed & built by websites.dessoy.co.uk" (links to https://websites.dessoy.co.uk).
+- Google Analytics 4 (property "Mark Taylor #82", Measurement ID `G-LNJE8TDHPR`) is owned by Rob, not the customer. The tag loads only after the visitor clicks Accept on the cookie banner. The choice is stored in `localStorage` (`mt82-consent`) for 12 months, and "Cookie settings" in the footer reopens the banner. Declining clears any `_ga` cookies. Do not swap this for Google's plain snippet, which sets cookies before consent.
 - News section and the stats strip (race number / championships / ambition) were deliberately removed.
 
 ## Gotchas
 - Global `img { height: auto }` is required. Without it, the width/height attributes on images stretch them.
 - After any CSS edit, check braces balance (`{` count equals `}` count). A deleted closing brace once silently broke every rule after it.
-- When scripting edits to `index.html`, assert the target text exists and slice from the right occurrence. There are two `<script>` tags (JSON-LD in the head, behaviour at the bottom).
+- When scripting edits to `index.html`, assert the target text exists and slice from the right occurrence. There are three `<script>` tags (JSON-LD and the GA loader in the head, behaviour at the bottom).
 - Mobile menu closes on link tap, Escape or outside tap; hover colours are wrapped in `@media (hover: hover)` so touch screens do not keep links highlighted.
 - Headless Chrome check: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars --window-size=1280,900 --screenshot=out.png file://$PWD/index.html`. The minimum window width is about 500px, so true 390px phones cannot be simulated.
 
 ## Still to do
-- Google Analytics 4: needs the customer's Measurement ID, then add the snippet.
 - Google Search Console: add the domain property and submit `https://marktaylor82.com/sitemap.xml`.
 - Optionally add links and descriptions for Oakdene and Melbray.
 - Replace branding assets when the new logo is delivered.
